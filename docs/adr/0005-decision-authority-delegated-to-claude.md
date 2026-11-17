@@ -41,7 +41,7 @@ Claude does not decide or do these. It prepares the options and a recommendation
 6. **Legal, regulatory, tax and accounting positions** that need counsel or the accountant.
 7. **Hiring and staffing** (D-27).
 8. **Owner mandates** in `CLAUDE.md` (no PHP, Flutter, modular monolith and API-first, markets).
-9. **External actions.** Pushing, pull requests or any change on GitHub or another external service, each needing the owner's approval ("Local only").
+9. **External actions.** Pushing, pull requests or any change on GitHub or another external service, each needing the owner's approval ("Local only"). The owner gave one standing approval on 2026-11-17: push each completed task's commits to the branch `yasir` of the project repository (never `main`, never force-push); it is recorded in `CLAUDE.md`.
 10. **Secrets** and production credentials.
 11. **Dependencies and tools that widen reach.** Anything that extends Claude's own reach (MCP servers, plugins, skills, GitHub Actions, CI services), any dependency used by protected paths, and any package with install scripts (GRD-7 kept for these). Other dependencies need a recorded decision and a security review before they are installed.
 

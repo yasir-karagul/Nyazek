@@ -124,6 +124,7 @@ From the role matrix in [seller-dashboard](../03-sellers/seller-dashboard.md) §
 | Performance, Analytics | ✓ | ✓ | ✓ | ✓ | ✓ | – |
 | Settings (store, pickup, policies) | ✓ | ✓ (read) | – | – | – | – |
 | Team, Activity log, Close account | ✓ | – | – | – | – | – |
+| KYC documents, Appeals, Referral, Help and tickets | ✓ | – | – | – | – | – |
 
 The home page shows each role only the cards and action-queue items of the groups it can see.
 
@@ -137,7 +138,7 @@ The home page shows each role only the cards and action-queue items of the group
 | `SUSPENDED`, `CLOSING` | Read-only: every page opens and every action that changes data is disabled, except the fulfilment actions on open sub-orders (including RTO receipt), responses to returns and disputes, security settings and payout-destination verification (SLA-7). Landing page is `SL-SUSPENDED`; support (`SF-ST-CONTACT` until seller tickets ship, SUP-10; appeals P1) stays available |
 | `CLOSED` | Sign-in leads to `SL-SUSPENDED` in its closed variant, which offers the history export only |
 
-Before 2FA is enrolled, every route redirects to `SL-AUTH-2FASETUP`.
+While the phone is unverified, every route redirects to `SL-AUTH-VERIFY`; then, before 2FA is enrolled, every route redirects to `SL-AUTH-2FASETUP`.
 
 ## 3. Admin Panel
 

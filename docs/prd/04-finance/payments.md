@@ -130,7 +130,7 @@ A COD sub-order whose collection is `WRITTEN_OFF` is still released to the selle
 - A seller is never paid from COD cash that has not been remitted and reconciled ([commission-wallet-payouts](commission-wallet-payouts.md) WAL-3).
 - Amount collected must equal the amount payable. Partial acceptance at the door is not supported at launch: the customer accepts or refuses the whole parcel.
 - Courier controls (exposure caps, ageing, penalties) are in [logistics](../02-commerce/logistics.md) §8.
-- Optional COD handling fee: `cfg:cod.fee` (default 0 IQD), shown as its own line, Nyazek revenue, never seller revenue (P1).
+- COD handling fee: `cfg:cod.fee` (default 0 IQD), shown as its own line, Nyazek revenue, never seller revenue. The mechanism is P0: quotes and orders always carry the COD fee field, at 0 until a value is set (D-21); a zero fee posts no ledger line ([ADR-0007](../../adr/0007-decisions-from-the-ia-consistency-pass.md)).
 
 ## 8. Chargebacks (cards, P1)
 

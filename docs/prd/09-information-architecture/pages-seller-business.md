@@ -54,11 +54,11 @@
 
 | ID | Template | Content | Actions | States and guards | Rules |
 |---|---|---|---|---|---|
-| SL-SET-STORE | `TPL-FORM` | Store name, slug (read-only, follows the name), logo, banner, about text in Arabic and English; preview of the store page | Save | Name change limit and pre-screen; images through the media checks | SEL-6 |
+| SL-SET-STORE | `TPL-FORM` | Store name, slug (read-only, derived from the name, SEL-6), logo, banner, about text in Arabic and English; preview of the store page | Save | Name change limit and pre-screen; images through the media checks | SEL-6 |
 | SL-SET-PICKUP | `TPL-LIST` (cards) | Pickup and return addresses with contact name and phone, working hours, which is default for new offers | Add, edit, set default, remove | Removal blocked while in use, with the list of offers and orders using it | SEL-5 |
 | SL-SET-POLICY | `TPL-FORM` | Default handling time (1 to the platform maximum, SLA-6); store return policy: a longer return window up to the platform maximum, and free change-of-mind return shipping in categories that allow change of mind; the category rules shown read-only beside each field | Save (applies to orders placed afterwards, RET-6) | Sellers cannot set shipping fees or shorten a window; values outside limits are refused | RET-9, RET-6, SLA-6 |
 | SL-SET-NOTIF | `TPL-FORM` | Per event group (orders, returns and disputes, wallet, catalog, account) and channel (in-app always on; email; SMS for urgent events) | Save | Critical notices cannot be turned off | [notifications-messaging](../02-commerce/notifications-messaging.md) §3 |
-| SL-SET-VACATION | `TPL-FORM` | Start and end dates; what happens (offers hidden from sale, open orders must still be fulfilled) | Turn on; end early | P1; maximum duration per `cfg:sellers.vacation_max_days` | Vacation mode |
+| SL-SET-VACATION | `TPL-FORM` | Start and end dates; what happens (offers hidden from sale, open orders must still be fulfilled) | Turn on (disabled, with the reason, while sub-orders await confirmation, SEL-9); end early | P1; maximum duration per `cfg:sellers.vacation_max_days` | Vacation mode |
 
 ## 6. Team, account, help
 

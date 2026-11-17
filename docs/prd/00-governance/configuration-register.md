@@ -17,7 +17,7 @@ Owner: Finance Manager (dual control)
 
 ## `events`
 
-Owner: Engineering
+Owner: Super Admin
 
 | Key | Proposed default | Defined in |
 |---|---|---|
@@ -144,6 +144,7 @@ Owner: Super Admin
 |---|---|---|
 | `inventory.reservation_ttl_minutes` | 15 | [inventory](../02-commerce/inventory.md) |
 | `inventory.low_stock_default` | 3 | [inventory](../02-commerce/inventory.md) |
+| `inventory.low_stock_badge_threshold` | 5 | [inventory](../02-commerce/inventory.md) |
 
 ## `shipping`
 
@@ -170,9 +171,9 @@ Owner: Fraud/Risk Manager; fees and remittance with Finance
 
 | Key | Proposed default | Defined in |
 |---|---|---|
+| `cod.fee` | 0 IQD | [payments](../04-finance/payments.md) |
 | `cod.confirmation_window_hours` | 24 | [checkout-orders](../02-commerce/checkout-orders.md) |
 | `cod.remittance_sla_days` | 3 | [logistics](../02-commerce/logistics.md) |
-| `cod.fee` | 0 IQD | [payments](../04-finance/payments.md) |
 | `cod.new_account_daily_orders` | 2 | [fraud-risk](../05-trust/fraud-risk.md) |
 | `cod.new_account_max_value` | 250,000 | [fraud-risk](../05-trust/fraud-risk.md) |
 | `cod.max_open_value` | 500,000 | [fraud-risk](../05-trust/fraud-risk.md) |
@@ -363,6 +364,8 @@ Owner: Content Manager
 |---|---|---|
 | `content.new_arrivals_days` | 30 | [support-cms](../02-commerce/support-cms.md) |
 | `content.top_rated_min_ratings` | 5 | [support-cms](../02-commerce/support-cms.md) |
+| `content.home_banners_max` | 6 | [support-cms](../02-commerce/support-cms.md) |
+| `content.home_row_cards` | 20 | [support-cms](../02-commerce/support-cms.md) |
 
 ## `identity`
 
@@ -376,6 +379,7 @@ Owner: Super Admin
 | `identity.otp_daily_cap` | 10 | [identity-access](../05-trust/identity-access.md) |
 | `identity.phone_stale_months` | 12 | [identity-access](../05-trust/identity-access.md) |
 | `identity.session_*` | customer 30 d sliding; seller 12 h idle / 7 d absolute; admin 30 min idle / 12 h absolute | [identity-access](../05-trust/identity-access.md) |
+| `identity.phone_change_cooldown_hours` | 72 | [identity-access](../05-trust/identity-access.md) |
 
 ## `risk`
 
@@ -410,4 +414,4 @@ Owner: Finance Manager with the accountant
 |---|---|---|
 | `firstparty.costing_method` | WEIGHTED_AVERAGE | [first-party-operations](../03-sellers/first-party-operations.md) |
 
-Total keys: 137.
+Total keys: 141.

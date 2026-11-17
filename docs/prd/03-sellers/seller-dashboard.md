@@ -62,6 +62,7 @@ Legend: F full · R read · – none. Roles are preset; a per-permission editor 
 - Home is open to every role; its figures and lists show only the areas the role can read.
 - Every staff member manages their own account (profile, security) and sees their own notifications, filtered to the areas they can read.
 - Vacation mode is part of Store Settings; pickups are part of Orders.
+- KYC documents, appeals, the referral programme and help and support tickets are Owner only until the owner decides wider access (T-0064) ([ADR-0007](../../adr/0007-decisions-from-the-ia-consistency-pass.md)).
 
 - Staff are separate accounts in the seller realm with their own email, password and mandatory 2FA.
 - Permissions are enforced by the API per endpoint; the dashboard only hides what the API would refuse.

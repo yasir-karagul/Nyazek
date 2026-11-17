@@ -20,7 +20,7 @@ A page specification that names a component gets everything in its row. Componen
 | Variant selector | One control per variant attribute (swatches for colour, buttons for size, dropdown beyond 8 values) | Unavailable combinations are shown disabled, not hidden; selecting a variant updates price, stock, images and URL | – |
 | Media gallery | Images with thumbnails, zoom, swipe; video where present | Uses named image variants (`thumb`, `card`, `detail`, `zoom`); first image is the main image | [catalog-listings](../02-commerce/catalog-listings.md) §8 |
 | Delivery estimate | "Delivery to <governorate> by <date range>" or "Not deliverable to <governorate>" with a change link | Inline (card), block (product page), per shipment (checkout) | SVC-3 |
-| Stock badge | In stock · "Only N left" when the API marks the stock as low · Out of stock | – | Availability from the API only |
+| Stock badge | In stock · "Only N left" at or below the threshold of STK-6 · Out of stock | – | STK-6; availability from the API only |
 | Quantity stepper | Minus, value, plus | Limits from the API (stock, per-line and per-item caps) with the reason shown at the limit | CRT-4 |
 | Cart line | Image, title, variant, seller, unit price, quantity stepper, line total, remove, move to favourites | Flags: price changed (old and new), low stock, unavailable, offer replaced (accept or remove) | CRT-2, CRT-3 |
 | Quote summary | Items subtotal · seller discounts · platform discount · loyalty redemption (P1) · shipping per shipment · surcharges · COD fee · tax line when non-zero · total payable | Cart (estimate, shipping shown after a governorate is known), checkout (final), order (as charged) | [checkout-orders](../02-commerce/checkout-orders.md) §4 |
@@ -74,7 +74,7 @@ A page specification that names a component gets everything in its row. Componen
 | Date and time | Absolute date in the market's time zone; relative ("2 hours ago") for recent events with the absolute value on focus | – |
 | Step indicator | Steps with current, done and upcoming | Checkout, wizards |
 | Toast | Short confirmation or error | Never the only place an error is shown for a form |
-| Step-up prompt | Password or 2FA again before a sensitive action | SES-5, SDB-3 |
+| Step-up prompt | Password or 2FA again before a sensitive action; Customer variant: OTP to the verified phone when the account has neither (Phone and OTP input) | SES-5, SDB-3 |
 | Consent banner | Accept, reject, choose; link to the cookie policy | [privacy-audit](../05-trust/privacy-audit.md) §2 |
 | Language switch | Arabic and English | Storefront: changes the URL prefix and keeps the page; dashboards: changes the account setting |
 | Notification item | Icon by class, title, one line, time, unread marker, link to the object | Opening marks it read |

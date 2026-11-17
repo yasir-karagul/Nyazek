@@ -84,7 +84,7 @@ Destination is `returnTo` if present, otherwise the page the customer came from,
 
 ## FL-8 Seller registration and onboarding
 
-`SF-SELL-LANDING` → `SL-AUTH-REGISTER` → `SL-AUTH-VERIFY` (email link) and phone OTP → `SL-AUTH-2FASETUP` (recovery codes shown once, confirmation required) → `SL-ONB-BIZ` → `SL-ONB-DOCS` → `SL-ONB-PAYOUT` → `SL-ONB-REVIEW` (accept the Seller Agreement, submit) → `SL-ONB-STATUS`.
+`SF-SELL-LANDING` → `SL-AUTH-REGISTER` → `SL-AUTH-VERIFY` (email link, then phone OTP; signing in again resumes the phone step) → `SL-AUTH-2FASETUP` (recovery codes shown once, confirmation required) → `SL-ONB-BIZ` → `SL-ONB-DOCS` → `SL-ONB-PAYOUT` → `SL-ONB-REVIEW` (accept the Seller Agreement, submit) → `SL-ONB-STATUS`.
 
 - Each step saves; signing in again resumes at the first incomplete step.
 - After submission the steps are read-only. `NEEDS_INFO` reopens only the items the reviewer listed. `REJECTED` shows reasons and "Reapply" while attempts remain (KYC-4).

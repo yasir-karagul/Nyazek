@@ -58,6 +58,7 @@ v6 described five "states" including Released and Returned, which are transition
 - STK-3 Low-stock alerts fire when `available` falls to the seller's threshold per offer (default `cfg:inventory.low_stock_default` (default 3)).
 - STK-4 An offer with `available = 0` is shown as out of stock, loses Buy Box eligibility immediately and pauses its ads.
 - STK-5 Restocking after RTO or a return is a seller action (the goods are in the seller's hands) prompted by a task in the Seller Dashboard. For 1P it is a stock adjustment by the 1P Merchandiser.
+- STK-6 The customer-facing "Only N left" badge shows the available count when it is at or below `cfg:inventory.low_stock_badge_threshold` (default 5). The API applies the threshold and returns the badge with the count computed at response time (ARC-6); cached pages may lag by their cache lifetime, and the count is never inflated or invented ([ADR-0007](../../adr/0007-decisions-from-the-ia-consistency-pass.md)).
 
 ## 5. Freshness
 

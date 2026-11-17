@@ -22,7 +22,7 @@ The rules each queue applies live in the domain documents. This document says wh
 | Promotions, loyalty, ads | §8.9 | Marketing | P1 (1P pricing rules, `AD-PRO-PRICING`, P0) | [pricing-promotions](../02-commerce/pricing-promotions.md), [loyalty](../02-commerce/loyalty.md), [advertising](../02-commerce/advertising.md) |
 | Reviews, support, CMS | §8.10 | Support, Content | P0 | [reviews-qa](../02-commerce/reviews-qa.md), [support-cms](../02-commerce/support-cms.md) |
 | Notifications, analytics, privacy | §8.11 | Marketing, Compliance, all | P0 | [notifications-messaging](../02-commerce/notifications-messaging.md), [data-analytics](../06-platform/data-analytics.md), [privacy-audit](privacy-audit.md) |
-| Platform settings, audit viewer | §8.12 | Super Admin and owning roles | P0 | [admin-governance](admin-governance.md) §5, [configuration-register](../00-governance/configuration-register.md) |
+| Platform settings, audit viewer | §8.12 | Super Admin (Finance for the commission schedule); owning roles review ([admin-governance](admin-governance.md) §5) | P0 | [admin-governance](admin-governance.md) §5, [configuration-register](../00-governance/configuration-register.md) |
 
 ## 2. Queue catalogue
 

@@ -29,7 +29,7 @@ Checkout pages use the reduced header ([navigation](navigation.md) §1.1) and sh
 
 - **Content:**
   - Signed-in customer: saved addresses as selectable address blocks (default pre-selected), each with edit; "Add a new address" opens the address form in a dialog.
-  - Guest: "Have an account? Sign in" link; then name, phone with OTP verification in a dialog, the address form, and the 18+ confirmation.
+  - Guest: "Have an account? Sign in" link; then name, phone with OTP verification in a dialog, the address form (its first phone is the verified phone and cannot be changed here; a second phone is optional), and the 18+ confirmation.
   - Delivery notes (optional).
 - **Actions:** select, add or edit an address; verify phone; **Continue**.
 - **States and guards:** an address outside every courier's service area is refused with a clear message and a way to pick or enter another (ADR-3); lines that cannot be delivered to the chosen address (hazardous, perishable, per-seller coverage) are listed with "Remove these items and continue" or "Change address"; the address limit message when adding beyond it.

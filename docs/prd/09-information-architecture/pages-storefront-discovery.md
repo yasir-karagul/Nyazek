@@ -26,10 +26,10 @@
 
 - **Template:** dedicated layout (CMS-composed). Sections render in the order set in the CMS; the default order is below.
 - **Content:**
-  1. Hero banner carousel: the scheduled banners (CMS-4), each an image per language and breakpoint with a link (category, campaign, product, store or search). Auto-advance pauses on focus or touch; reduced-motion shows the first banner only.
+  1. Hero banner carousel: the scheduled banners (CMS-4, at most `cfg:content.home_banners_max`, CMS-7), each an image per language and breakpoint with a link (category, campaign, product, store or search). Auto-advance pauses on focus or touch; reduced-motion shows the first banner only.
   2. Category grid: the ten top-level categories with icon or image and name.
   3. Flash deals strip (P1): countdown and a carousel of deal products; link to `SF-DEAL-FLASH`.
-  4. Product rows with tabs: New Arrivals · Best Sellers · Top Rated · Deals & Offers. One tab is shown at a time; each shows a row of product cards and "See all". The rows are computed per CMS-7; "See all" opens `SF-SEARCH` sorted by newest, best selling or rating, or filtered to deals.
+  4. Product rows with tabs: New Arrivals · Best Sellers · Top Rated · Deals & Offers. One tab is shown at a time; each shows up to `cfg:content.home_row_cards` product cards (CMS-7) and "See all". The rows are computed per CMS-7; "See all" opens `SF-SEARCH` sorted by newest, best selling or rating, or filtered to deals.
   5. Sponsored row (P1), labelled.
   6. Featured brands (P1).
   7. Trust strip (CMS): cash on delivery, returns, verified sellers; each links to its policy page.
@@ -78,7 +78,7 @@
   - Selecting a variant updates price, stock, media, delivery estimate, seller block and the URL (`?variant=`), without a full reload.
 - **States and guards:**
   - No offer for the selected variant (BBX-7): "Currently unavailable", no price, alert sign-up (P1), other variants still selectable.
-  - Unpublished or archived product: page stays with "No longer available" and similar products; merged product redirects to the survivor (CAT-10, CAT-12).
+  - Unpublished product: "Not available", HTTP `404`, `noindex`. Archived product: "No longer available" and similar products, HTTP `410`, `noindex`. Taken down for a policy or legal reason: the generic notice only. Merged product: redirect to the survivor (CAT-10, CAT-12, [web-apps](../07-clients/web-apps.md) §4.3).
   - Seller-owned (Type C) listing: one seller, no offers list.
   - Hazardous or not deliverable to the selected governorate: delivery block says so; adding to cart is still allowed, and the address step decides (ADR-3).
   - Price, stock and Buy Box are fetched fresh or revalidated on change; the rest of the page is cached.

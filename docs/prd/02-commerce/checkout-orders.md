@@ -65,6 +65,7 @@ Iraq has no reliable postal-code or street-naming system; addresses are structur
 - GST-1 The phone number is verified by OTP before the session exists.
 - GST-2 If the phone already belongs to a customer account, the OTP signs the customer in to that account and checkout continues as that customer, subject to the same checks as a normal sign-in. If the recycled-number check (ID-REC-1) fails, ID-REC-1 applies: the old account is closed and checkout continues with the new account created for the number. If the account has 2FA enabled and the second factor is not given, checkout cannot continue as that account and the customer is offered normal sign-in or recovery. If the phone belongs to another account type, checkout is refused with the generic identity message ([identity-access](../05-trust/identity-access.md) §4).
 - GST-3 Otherwise a customer account is created with the verified phone and no password. The customer can set a password and add an email later.
+- GST-3a A guest's verified phone is always the first contact phone of the delivery address; a second phone is optional ([ADR-0007](../../adr/0007-decisions-from-the-ia-consistency-pass.md)).
 - GST-4 Guests look up orders with order number + OTP to the order's phone. A successful lookup opens an **order-lookup session** scoped to that one order (view, track, cancel, return, dispute, download documents), lasting `cfg:identity.order_lookup_session_minutes` (default 30); it gives no access to the account's other orders, addresses or refund accounts.
 
 ## 4. Quote (price calculation)
@@ -182,7 +183,7 @@ Terminal sub-order states: `COMPLETED`, `CANCELLED`, `RTO_RECEIVED`, `LOST`. Cus
 
 | Stage | Obligation | Default | On breach |
 |---|---|---|---|
-| 1 Confirmation | Accept or reject from `PENDING_SELLER_CONFIRMATION` | `cfg:orders.confirm_sla_hours` (default 24) | Auto-cancel `SLA_CONFIRM_TIMEOUT`; counts against seller |
+| 1 Confirmation | Accept or reject from `PENDING_SELLER_CONFIRMATION` | `cfg:orders.confirm_sla_hours` (default 24) | Auto-cancel `SLA_CONFIRM_TIMEOUT`; counts against seller except as PRF-4 excludes |
 | 2 Shipment | Reach `READY_TO_SHIP` (packed, waybill and label created) after confirmation | 24 hours × the largest handling time among the sub-order's offers (SLA-6) | Auto-cancel `SLA_SHIP_TIMEOUT`; counts against seller |
 | Handover | Pickup requested or drop-off declared, and parcel scanned by the courier, after `READY_TO_SHIP` | `cfg:orders.handover_grace_hours` (default 48) | No auto-cancel; goes to the Logistics exception queue. A pickup that failed because of the seller counts as a late shipment |
 
@@ -200,7 +201,7 @@ Terminal sub-order states: `COMPLETED`, `CANCELLED`, `RTO_RECEIVED`, `LOST`. Cus
 |---|---|---|
 | Customer | `ON_HOLD`, `PENDING_SELLER_CONFIRMATION`, `CONFIRMED`, `READY_TO_SHIP`, per sub-order (the waybill is voided if it exists). While the order is `AWAITING_PAYMENT`, only the whole order can be cancelled, because one payment covers every sub-order | None |
 | Seller | `PENDING_SELLER_CONFIRMATION` (reject), `CONFIRMED`, `READY_TO_SHIP` | Counts as seller cancellation |
-| System | SLA timeouts, payment window lapse, unconfirmed COD, risk rejection, seller suspension (SLA-7) | Timeouts count against seller; others do not |
+| System | SLA timeouts, payment window lapse, unconfirmed COD, risk rejection, seller suspension (SLA-7) | Timeouts count against seller except as PRF-4 excludes; others do not |
 | Admin | Any state before `SHIPPED`, with reason | Per reason recorded |
 
 After `SHIPPED` nobody can cancel. The customer refuses delivery (`DELIVERY_FAILED`) or uses the returns process. An admin who must stop a shipped parcel asks the courier to return it and records the outcome through a manual state override (ORD-12: `DELIVERY_FAILED` or `LOST`, dual control per [admin-governance](../05-trust/admin-governance.md) §3); money then follows the effects table above.

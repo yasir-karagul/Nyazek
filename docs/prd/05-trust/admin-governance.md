@@ -37,7 +37,7 @@ M = manage (create, edit, decide) · R = read · A = approve as second person ·
 | Domain | Super | Catalog | Seller Mgr | Finance | Support | Content | Risk | Compliance | 1P | Logistics | Marketing |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Admin users, roles, thresholds | M, A | – | – | – | – | – | – | R | – | – | – |
-| Platform settings | M | R | R | R | R | R | R | R | – | R | R |
+| Platform settings | M | R | R | R, A (tax and the financially sensitive settings in §3) | R | R | R | R | – | R | R |
 | Catalogue, categories, brands | R | M | R | – | R | – | R | R | R | – | R |
 | Price-rule and listing-report queues | R | M | R | – | R | – | R | R | – | – | – |
 | Sellers and KYC | R | – | M, A | R | R | – | R | R | – | – | – |
@@ -82,6 +82,9 @@ A dual-control action is requested by one admin and approved by a different admi
 | Risk hold on a seller above `cfg:risk.hold_dual_control_threshold` (default 1,000,000 IQD) | Risk | Super Admin, Finance |
 | Legal-page publication | Content Manager | Compliance |
 | Role, permission or threshold change | Super Admin | Super Admin (different person) |
+| Password or 2FA reset of an admin ([identity-access](identity-access.md) §4) | Super Admin (not the target) | Super Admin (different person, not the target); where fewer than two other Super Admins exist, the owner performs the reset |
+| Tax configuration change | Super Admin | Finance |
+| Financially sensitive setting change (the single list: payout cycle, escrow hold, order and payment timers, COD limits and fee, shipping rates, loyalty rates; the commission schedule and the thresholds of this table have their own rows) | The editing role | Finance; Super Admin when Finance edits |
 | Manual order state override after `SHIPPED` | Support, Logistics | Super Admin, Finance |
 | Bulk personal-data export | Any | Compliance |
 | Manual journal entry | Finance | Super Admin |
@@ -103,8 +106,8 @@ A dual-control action is requested by one admin and approved by a different admi
 
 ## 5. Platform configuration
 
-- Every value marked `cfg:` in this documentation is stored in the `backoffice` configuration store, typed and validated, with an owner role, audit history and effective-from time. The full list is in [configuration-register](../00-governance/configuration-register.md).
-- Financially sensitive settings (thresholds, commission, payout cycle, escrow hold, COD limits) change under dual control.
+- Every value marked `cfg:` in this documentation is stored in the `backoffice` configuration store, typed and validated, with an owner role, audit history and effective-from time. Values on the platform settings pages (`AD-SET-*`) are edited by the Super Admin (matrix row "Platform settings"), except the commission schedule, which Finance edits. Values with their own pages are edited by the role that page names: COD limits by Fraud/Risk (`AD-RISK-COD`), loyalty rates by Marketing, only on `AD-LOY-CONFIG`, 1P pricing rules by the 1P Merchandiser (`AD-PRO-PRICING`). The owner role named in the configuration register is notified of every change to its values ([ADR-0007](../../adr/0007-decisions-from-the-ia-consistency-pass.md)). The full list is in [configuration-register](../00-governance/configuration-register.md).
+- Financially sensitive settings change under dual control as listed in §3.
 - Feature flags and the app-configuration values (minimum app versions, maintenance mode) are managed in the same store ([api-standards](../06-platform/api-standards.md) API-6).
 - A configuration value resolves in this order: market override, then platform default. Market configuration (currency table, time zone, phone ranges, address labels, working week, tax region) is held in the same store. Admin roles are granted per market; at launch every role is scoped to Iraq.
 

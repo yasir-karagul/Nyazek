@@ -8,7 +8,7 @@ for d, _, fs in sorted(os.walk(root)):
         p = os.path.join(d, f); t = open(p, encoding='utf-8').read()
         for m in re.finditer(r'`cfg:([a-z0-9_.*]+)`(?:\s*\(default ([^)]*(?:\([^)]*\))?[^)]*)\))?', t):
             k, dflt = m.group(1), m.group(2)
-            rel = os.path.relpath(p, os.path.join(root, '00-governance'))
+            rel = os.path.relpath(p, os.path.join(root, '00-governance')).replace(os.sep, '/')
             name = f[:-3]
             if k not in rows:
                 rows[k] = [dflt, name, rel]; order.append(k)
@@ -21,7 +21,7 @@ manual = {
  'shipping.free_threshold': 'set under D-21',
 }
 owners = collections.OrderedDict([
- ('money','Finance Manager (dual control)'),('events','Engineering'),('buybox','Catalog Manager + Super Admin'),('search','Catalog Manager'),
+ ('money','Finance Manager (dual control)'),('events','Super Admin'),('buybox','Catalog Manager + Super Admin'),('search','Catalog Manager'),
  ('catalog','Catalog Manager'),('media','Catalog Manager'),('pricing','Catalog Manager / Finance Manager'),('promo','Marketing Manager'),
  ('cart','Super Admin'),('checkout','Fraud/Risk Manager'),('customers','Super Admin'),('orders','Super Admin (dual control)'),('inventory','Super Admin'),
  ('shipping','Finance Manager (dual control)'),('logistics','Logistics Manager'),('cod','Fraud/Risk Manager; fees and remittance with Finance'),

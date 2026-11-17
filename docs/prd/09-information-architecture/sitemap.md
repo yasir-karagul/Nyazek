@@ -406,7 +406,7 @@ Routes relative to the admin host. Access by role ([admin-governance](../05-trus
 | AD-USR-SELLER | Seller detail | `/users/sellers/:sellerId` | P0 | Seller Manager, Fraud/Risk (suspension), Finance (payout cycle) | KYC, performance, wallet, listings, staff, history; view as seller `[ACTION]` P1 |
 | AD-SEL-KYC | KYC queue | `/sellers/kyc` | P0 | Seller Manager | |
 | AD-SEL-KYC-CASE | KYC application | `/sellers/kyc/:applicationId` | P0 | Seller Manager | Approve, reject, request information; duplicate flags |
-| AD-SEL-PERF | Seller performance | `/sellers/performance` | P0 | Seller Manager | Scores, levels, overrides |
+| AD-SEL-PERF | Seller performance | `/sellers/performance` | P0 | Seller Manager | Scores, levels, Level 4 lift (PRF-9) |
 | AD-SEL-APPEALS | Appeals | `/sellers/appeals` | P1 | Seller Manager | |
 | AD-USR-ADMINS | Admin users | `/users/admins` | P0 | Super Admin | Invite `[MODAL]` |
 | AD-USR-ROLES | Roles and permissions | `/users/roles` | P0 | Super Admin | 11 roles, matrix, thresholds |
@@ -543,26 +543,26 @@ Routes relative to the admin host. Access by role ([admin-governance](../05-trus
 
 | ID | Page | Route | Pri | Role |
 |---|---|---|---|---|
-| AD-SET-GENERAL | General | `/settings/general` | P0 | Super Admin, owning role ([admin-panel](../05-trust/admin-panel.md) §1) |
-| AD-SET-LOCAL | Market, languages and formats | `/settings/localization` | P0 | Super Admin, owning role ([admin-panel](../05-trust/admin-panel.md) §1) |
-| AD-SET-GEO | Geo reference data | `/settings/geo` | P0 | Super Admin, owning role ([admin-panel](../05-trust/admin-panel.md) §1) |
-| AD-SET-CALENDAR | Platform holidays and force majeure | `/settings/calendar` | P0 | Super Admin, owning role ([admin-panel](../05-trust/admin-panel.md) §1) |
-| AD-SET-SHIP | Shipping zones, rates, free threshold, surcharges | `/settings/shipping` | P0 | Super Admin, owning role ([admin-panel](../05-trust/admin-panel.md) §1) |
-| AD-SET-TAX | Tax configuration | `/settings/tax` | P0 | Super Admin, owning role ([admin-panel](../05-trust/admin-panel.md) §1) |
-| AD-SET-PAY | Payment methods and gateways | `/settings/payments` | P0 | Super Admin, owning role ([admin-panel](../05-trust/admin-panel.md) §1) |
+| AD-SET-GENERAL | General | `/settings/general` | P0 | Super Admin |
+| AD-SET-LOCAL | Market, languages and formats | `/settings/localization` | P0 | Super Admin |
+| AD-SET-GEO | Geo reference data | `/settings/geo` | P0 | Super Admin |
+| AD-SET-CALENDAR | Platform holidays and force majeure | `/settings/calendar` | P0 | Super Admin |
+| AD-SET-SHIP | Shipping zones, rates, free threshold, surcharges | `/settings/shipping` | P0 | Super Admin |
+| AD-SET-TAX | Tax configuration | `/settings/tax` | P0 | Super Admin, Finance (A) |
+| AD-SET-PAY | Payment methods and gateways | `/settings/payments` | P0 | Super Admin |
 | AD-SET-COMM | Commission schedule | `/settings/commissions` | P0 | Finance, Super Admin (A) |
-| AD-SET-PRICE | Price floors, anti-dumping, MAP | `/settings/price-rules` | P0 | Super Admin, owning role ([admin-panel](../05-trust/admin-panel.md) §1) |
-| AD-SET-LIMITS | Seller listing caps | `/settings/seller-limits` | P0 | Super Admin, owning role ([admin-panel](../05-trust/admin-panel.md) §1) |
-| AD-SET-SLA | Seller SLAs, escrow hold, order timers | `/settings/sla` | P0 | Super Admin, owning role ([admin-panel](../05-trust/admin-panel.md) §1) |
-| AD-SET-RETURNS | Return windows and eligibility by category | `/settings/return-policies` | P0 | Super Admin, owning role ([admin-panel](../05-trust/admin-panel.md) §1) |
-| AD-SET-RANK | Buy Box and search weights, synonyms | `/settings/ranking` | P0 | Super Admin, owning role ([admin-panel](../05-trust/admin-panel.md) §1) |
-| AD-SET-LOYALTY | Loyalty programme | `/settings/loyalty` | P1 | Super Admin, owning role ([admin-panel](../05-trust/admin-panel.md) §1) |
-| AD-SET-NOTIF | Notification settings | `/settings/notifications` | P0 | Super Admin, owning role ([admin-panel](../05-trust/admin-panel.md) §1) |
-| AD-SET-INTEG | Integrations and credentials status | `/settings/integrations` | P0 | Super Admin, owning role ([admin-panel](../05-trust/admin-panel.md) §1) |
-| AD-SET-APP | App configuration and feature flags | `/settings/app-config` | P0 | Super Admin, owning role ([admin-panel](../05-trust/admin-panel.md) §1) |
-| AD-SET-SEC | Admin security | `/settings/security` | P0 | Super Admin, owning role ([admin-panel](../05-trust/admin-panel.md) §1) |
+| AD-SET-PRICE | Price floors, anti-dumping, MAP | `/settings/price-rules` | P0 | Super Admin |
+| AD-SET-LIMITS | Seller listing caps | `/settings/seller-limits` | P0 | Super Admin |
+| AD-SET-SLA | Seller SLAs, escrow hold, order timers | `/settings/sla` | P0 | Super Admin |
+| AD-SET-RETURNS | Return windows and eligibility by category | `/settings/return-policies` | P0 | Super Admin |
+| AD-SET-RANK | Buy Box and search weights, synonyms | `/settings/ranking` | P0 | Super Admin |
+| AD-SET-LOYALTY | Loyalty programme | `/settings/loyalty` | P1 | Super Admin |
+| AD-SET-NOTIF | Notification settings | `/settings/notifications` | P0 | Super Admin |
+| AD-SET-INTEG | Integrations and credentials status | `/settings/integrations` | P0 | Super Admin |
+| AD-SET-APP | App configuration and feature flags | `/settings/app-config` | P0 | Super Admin |
+| AD-SET-SEC | Admin security | `/settings/security` | P0 | Super Admin |
 | AD-AUDIT | Audit trail viewer | `/audit-log` | P0 | Super Admin, Compliance (read only) |
-| AD-SYS-HEALTH | System health (queues, outbox, dead letters) | `/system/health` | P1 | Super Admin, owning role ([admin-panel](../05-trust/admin-panel.md) §1) |
+| AD-SYS-HEALTH | System health (queues, outbox, dead letters) | `/system/health` | P1 | Super Admin |
 
 ---
 

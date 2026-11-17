@@ -139,7 +139,7 @@ Rules:
 | `account.registered`, `account.verified`, `account.closed` | identity | accountId, realm |
 | `seller.kyc_submitted`, `seller.kyc_decided`, `seller.status_changed` | sellers | sellerId, from, to, reasonCode |
 | `seller.performance_level_changed` | sellers | sellerId, fromLevel, toLevel, score |
-| `product.published`, `product.updated`, `product.unpublished` | catalog | productId, variantIds |
+| `product.published`, `product.updated`, `product.unpublished`, `product.archived`, `product.merged` | catalog | productId, variantIds; `product.merged` adds survivorProductId |
 | `offer.created`, `offer.price_changed`, `offer.status_changed` | catalog | offerId, sellerId, variantId, price |
 | `buybox.winner_changed` | catalog | variantId, fromOfferId, toOfferId |
 | `stock.changed` | inventory | offerId, available, reason |

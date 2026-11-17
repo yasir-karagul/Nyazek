@@ -97,11 +97,13 @@ Allowed transitions (every other transition is rejected):
 - Return policy: sellers may be more generous than the platform rules, never less.
 - Sellers cannot set shipping fees.
 - SEL-5 A pickup address cannot be removed while an active offer uses it as its origin or a non-terminal sub-order or return ships from or to it. The seller first moves the offers to another address.
-- SEL-6 The store name, logo, banner and about text pass the content pre-screen (prohibited words, contact details, links, trademark terms the seller is not authorised for). A store name can be changed at most once every 30 days; the previous store URL redirects to the new one.
+- SEL-6 The store name, logo, banner and about text pass the content pre-screen (prohibited words, contact details, links, trademark terms the seller is not authorised for). A store name can be changed at most once every 30 days; the previous store URL redirects to the new one. The store slug is unique and derived from the store name by a fixed Arabic-to-Latin transliteration, with a numeric suffix on collision; it is read-only for the seller and changes with the name. Former slugs stay reserved to the store and redirect to it; a managed list of reserved words (for example the platform name, "official", "support") cannot be used. The Seller Manager may correct a slug on `AD-USR-SELLER`; a correction holds until the next name change ([ADR-0007](../../adr/0007-decisions-from-the-ia-consistency-pass.md)).
 
 ### 6.1 Vacation mode (P1)
 
 Pauses all offers for up to `cfg:sellers.vacation_max_days` (default 30) without performance penalty. Open orders must still be fulfilled. Offers resume automatically at the end date.
+
+- SEL-9 Vacation mode cannot start while any of the seller's sub-orders is in `PENDING_SELLER_CONFIRMATION`; the seller confirms or rejects them first. The check runs when vacation is turned on and again at a scheduled start date; the `sellers` module asks the `orders` module through its exported query (ARC-3). A sub-order that reaches the seller during vacation (a COD hold released, a late prepaid payment) follows the normal confirmation SLA and is notified to the seller; if it is cancelled by that SLA, the cancellation is excluded from the seller's performance metrics. There is no allowance beyond the maximum duration ([ADR-0007](../../adr/0007-decisions-from-the-ia-consistency-pass.md)).
 
 ## 7. Store staff (P1)
 

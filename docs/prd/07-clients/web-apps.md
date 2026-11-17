@@ -81,7 +81,7 @@ The structure, content and actions of each page are specified in [09-information
 - Clean, stable, human-readable URLs (the same routes later serve as deep links for the apps).
 - Canonical URLs, `hreflang` pairs, paginated listing URLs, XML sitemaps per type and language, `robots.txt` (Seller and Admin origins disallow everything).
 - Structured data (JSON-LD): Product with offers and aggregate rating, Breadcrumb, Organization. Open Graph and equivalent tags on product, store and campaign pages so shared links preview correctly.
-- Out-of-stock products keep their URL; removed products return `410` or redirect to the merged product.
+- A product with no live offer (out of stock, offers paused, seller on vacation) keeps its URL and a normal page ("Currently unavailable", BBX-7). An unpublished product, including one taken down under PRH-1, returns HTTP `404` with a "Not available" page and `noindex`, because it may return. An archived product (CAT-12) keeps resolving to a "No longer available" page with similar products, served with HTTP `410` and `noindex`. A product taken down for a policy or legal reason shows only the generic notice, never its content. A merged product redirects permanently to the survivor (CAT-10). The product resource carries its state (`unpublished`, `archived`, `merged` with the survivor's ID), and the `product.unpublished`, `product.archived` and `product.merged` events purge the edge cache and the search index ([ADR-0007](../../adr/0007-decisions-from-the-ia-consistency-pass.md)).
 - Search-result pages are `noindex`; category pages are indexable.
 
 ### 4.4 Deep-link readiness

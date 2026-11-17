@@ -45,4 +45,3 @@ Each application has its own versions in its own shell, in both languages. All u
 | A page needing sign-in | Login with `returnTo` (IA-13) | Temporary |
 | Seller routes before onboarding or 2FA is complete | The pending onboarding or 2FA page ([navigation](navigation.md) §2.4) | Temporary |
 | `/en` paths when the page has no English content yet | The Arabic page with a notice | Temporary |
-| Removed product with no successor | A "no longer available" response (`410`) | – |

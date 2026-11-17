@@ -1,0 +1,15 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+.claude/settings.local.json
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+*.tmp
+
+# Local navigation graph (Graphify)
+graphify-out/

@@ -16,12 +16,12 @@
 
 ## 2. Tokens
 
-### 2.1 Tokens defined by the owner
+### 2.1 Tokens defined by the owner (usage rules from ADR-0006)
 
 | Token | Value | Use |
 |---|---|---|
-| Primary (Meteor Orange) | `#F47B25` | Brand accents, large highlights, filled-button background **only with dark text** (§3) |
-| Promo Accent | `#FF6B00` | Offers and campaigns only |
+| Primary (Meteor Orange) | `#F47B25` | Brand accents, large highlights, illustrations and the logo; never text, thin icons, input borders, focus rings or button fills ([ADR-0006](../../adr/0006-design-system-foundations.md)) |
+| Promo Accent | `#FF6B00` | Campaign artwork in banners and landing-page illustrations only; never text, buttons, badges or next to a Primary element (ADR-0006) |
 | Deep Charcoal | `#333333` | Text, headings, icons, structure |
 | Light Background | `#F8F7F5` | Page background |
 | White | `#FFFFFF` | Cards and surfaces |
@@ -36,9 +36,45 @@
 
 v6 made Figma variables the source and relied on an automated export. With the manual workflow and no Figma integration, the repository file is the only reliable source.
 
-## 3. Corrections that need a design decision (D-19)
+### 2.3 Tokens decided under D-19
 
-Screens must not be produced until these are decided, because they change every component.
+Decided in [ADR-0006](../../adr/0006-design-system-foundations.md). Contrast is against White `#FFFFFF` and Light Background `#F8F7F5`; every text pairing is at least 4.5:1 (disabled controls are exempt, as WCAG 2.2 allows) and every interface-component border at least 3:1.
+
+| Group | Token | Value | Use and contrast |
+|---|---|---|---|
+| Colour | Primary Strong | `#B4500A` | Filled primary buttons (white text 5.13:1), text links and small or thin orange icons (5.13:1 on white, 4.79:1 on the page background) |
+| Colour | Primary Strong hover / pressed | `#9A4408` / `#803808` | White text 6.55:1 / 8.44:1 |
+| Colour | Disabled control | Background `#ECEAE6`, text `#707070` | Disabled controls are exempt from contrast minimums; the text is still 4.12:1 |
+| Colour | Deal Red | `#B3261E` | Discount and deal badges, pill-shaped, always with a text label (white text 6.54:1) |
+| Colour | Focus ring | `#333333`, 2 px, 2 px offset | Every focusable element (12.63:1) |
+| Semantic | Error / on tint | `#C62828` / tint `#FDECEA` | Text 5.62:1 on white, 4.92:1 on its tint; always with an icon or text |
+| Semantic | Success / on tint | `#1E7B34` / tint `#E8F5EC` | 5.33:1 on white, 4.75:1 on its tint |
+| Semantic | Warning / on tint | `#8A5A00` / tint `#FFF4E0` | 5.93:1 on white, 5.44:1 on its tint |
+| Semantic | Info / on tint | `#1F5FAD` / tint `#E8F0FB` | 6.37:1 on white, 5.54:1 on its tint |
+| Neutral | Text primary | `#333333` (Deep Charcoal) | 12.63:1 |
+| Neutral | Text secondary | `#666666` | 5.74:1 on white, 5.36:1 on the page background |
+| Neutral | Text disabled, placeholder | `#707070` | 4.95:1 on white, 4.63:1 on the page background |
+| Neutral | Input and control border | `#8C8C8C` | 3.36:1 on white |
+| Neutral | Divider (decorative) | `#D6D3CE` | Separators only, never the only boundary of a control |
+| Typography | Arabic face | Noto Sans Arabic (variable, 400 / 500 / 700) | Self-hosted and bundled |
+| Typography | Latin face | Inter 400 / 500 / 700 | Self-hosted and bundled |
+| Typography | Sizes (px) | 14 · 16 · 18 · 20 · 24 · 30 · 36 | 16 body in both languages on every screen; 14 only for secondary text and dense tables |
+| Typography | Line height | Arabic 1.7 · Latin 1.5 (body); headings 1.3 | – |
+| Spacing | Scale (px) | 4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 | Default gap 16; dense tables 8 |
+| Radius | (from §2.1) | 4 · 8 · 12 · pill | – |
+| Elevation | Levels | none · sm (cards) · md (menus, popovers) · lg (dialogs) | Light shadows only (§1) |
+| Breakpoints | Widths (px) | 360 · 768 · 1280 | As [ia-model](../09-information-architecture/ia-model.md) §7 |
+| Motion | Durations | 100 · 200 · 300 ms, standard easing | Non-essential motion off when the user prefers reduced motion |
+| Layers | z-index | base 0 · sticky 100 · header 200 · dropdown 300 · drawer and overlay 400 · modal 500 · toast 600 | – |
+| Targets | Minimum touch target | 44 × 44 CSS px (web) · 48 × 48 dp (apps, MOB-11) | – |
+| Density | Dense variant | Row height 40 px, 14 px text | Seller and Admin tables |
+| Theme | Colour scheme | Light only: `color-scheme: light`; light interface style in the apps | – |
+| Numbers | Digits | Western digits in both languages; money formatted from the market's currency table (MON-7, MON-8), amount isolated left-to-right in Arabic | – |
+
+
+## 3. Corrections decided under D-19
+
+Each correction below was decided in [ADR-0006](../../adr/0006-design-system-foundations.md) (D-19 closed); the resulting values are in §2.3. The table records the original findings; where a recommended resolution below names a different value or offers a choice (for example `#C2560A`), §2.3 and ADR-0006 decide.
 
 | Finding | Evidence | Recommended resolution |
 |---|---|---|
@@ -55,8 +91,8 @@ Screens must not be produced until these are decided, because they change every 
 
 ## 4. Component rules
 
-- Primary button: solid primary background with the text colour decided under D-19; secondary button: white with charcoal or grey border.
-- Inputs: visible label, helper and error text; focus ring per §3.
+- Primary button: solid Primary Strong `#B4500A` background with white text (ADR-0006); secondary button: white with a charcoal or `#8C8C8C` border.
+- Inputs: visible label, helper and error text; focus ring per §2.3.
 - Every interactive component defines the states: default, hover, focus-visible, active, disabled, loading, error; and, for data components: loading, empty, error, partial.
 - Components are documented in Storybook with Arabic and English stories at worst-case text length, in both directions.
 - Component names in Figma match component names in code.

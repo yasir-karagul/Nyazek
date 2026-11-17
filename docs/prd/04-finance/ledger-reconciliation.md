@@ -25,7 +25,7 @@
 - MON-4 Price step: offer prices, shipping fees, COD fees and fixed-amount coupons must be multiples of `cfg:money.price_step` (default 250 IQD), the smallest practical cash unit.
 - MON-5 Payable totals: percentage discounts and loyalty redemptions are adjusted so that each sub-order's amount payable is a multiple of the price step; the adjustment always favours the customer and is borne by whoever funds the discount. Rules MON-4 and MON-5 are the recommended resolution of D-12 and apply to all payment methods so that COD and prepaid totals are identical.
 - MON-6 The rounding and allocation functions exist once, in the backend Money library, with property-based tests. Clients never compute money ([architecture](../06-platform/architecture.md) ARC-6).
-- MON-7 Display: Western digits and the format `125,000 IQD` (English) / `125,000 د.ع` (Arabic) unless Design decides otherwise under D-19.
+- MON-7 Display: Western digits and the format `125,000 IQD` (English) / `125,000 د.ع` (Arabic), confirmed under D-19 ([ADR-0006](../../adr/0006-design-system-foundations.md)).
 - MON-8 A currency table defines, per currency, the **platform exponent** (decimal places stored), the price step and the display format. IQD has exponent 0 and step 250 even though ISO 4217 lists three decimals, because fils are not used; libraries and providers that assume the ISO exponent must not be trusted for formatting or amounts (PAY-19). The table is published to clients through app configuration. This is what lets a later market use a two- or three-decimal currency without changing the Money library ([market-expansion](../01-product/market-expansion.md) §3).
 
 ## 3. Chart of accounts (indicative)

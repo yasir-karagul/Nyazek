@@ -54,8 +54,8 @@ Design runs alongside Phases 2–4 so that P0 page designs exist when UI tasks s
 
 | ID | Task | Status | Depends on | Risk | Source / file |
 |---|---|---|---|---|---|
-| T-0018 | Claude (ADR-0005), with a designer's input where available: decide D-19 (Arabic typeface, accessible orange, missing tokens, numerals) | ready | — | docs | `docs/prd/07-clients/design-system-ui-workflow.md` §3 |
-| T-0019 | Claude: write Stitch design briefs per page group from the page specifications (template, content, states, both languages), as the fixed prompt prefix for the first design pass | backlog | T-0012, T-0018 | docs | `docs/prd/09-information-architecture/` |
+| T-0018 | Claude (ADR-0005), with a designer's input where available: decide D-19 (Arabic typeface, accessible orange, missing tokens, numerals) | done | — | docs | `docs/prd/07-clients/design-system-ui-workflow.md` §3; decided in `docs/adr/0006-design-system-foundations.md` (D-19 closed); reviews `docs/reviews/documentation/2026-11-17-T-0018-d19*.md` (approve) |
+| T-0019 | Claude: write Stitch design briefs per page group from the page specifications (template, content, states, both languages), as the fixed prompt prefix for the first design pass | ready | T-0012, T-0018 | docs | `docs/prd/09-information-architecture/` |
 
 ### 1e. Follow-ups from the T-0012 review
 
@@ -94,7 +94,7 @@ Deliverables: [`tasks/03-implementation-guide/README.md`](03-implementation-guid
 |---|---|---|---|---|---|
 | T-0040 | Guide: `standards/` | backlog | T-0031 | docs | `tasks/03-implementation-guide/README.md` |
 | T-0041 | Guide: `backend/` | backlog | T-0040 | docs | `tasks/03-implementation-guide/README.md`; ADR-0004 OI-3 |
-| T-0042 | Guide: `frontend/` | backlog | T-0040 | docs | `tasks/03-implementation-guide/README.md`; ADR-0004 OI-4 |
+| T-0042 | Guide: `frontend/` | backlog | T-0040 | docs | `tasks/03-implementation-guide/README.md`; ADR-0004 OI-4; ADR-0006 Sorani Kurdish glyph check |
 | T-0043 | Guide: `testing/` | backlog | T-0041, T-0042 | docs | `tasks/03-implementation-guide/README.md` |
 | T-0044 | Guide: `security/` | backlog | T-0041 | docs, security | `tasks/03-implementation-guide/README.md`; ADR-0004 OI-2 |
 | T-0045 | Guide: `deployment/` | backlog | T-0040 | docs | `tasks/03-implementation-guide/README.md`; ADR-0004 OI-1 |

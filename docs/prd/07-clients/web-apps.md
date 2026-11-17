@@ -31,7 +31,7 @@ Shared packages: `ui-web` (components), `design-tokens`, `i18n`, `contracts`, `a
 - Storefront URLs: Arabic at the root, English under `/en`, with `hreflang` and canonical tags; the choice is remembered in a cookie and, when signed in, in the account. The dashboards use the account's language setting.
 - All user-facing strings come from the shared ICU message catalogues; no hard-coded text in components.
 - Layout uses CSS logical properties; directional icons mirror; mixed-direction text (English brand names, numbers, order numbers inside Arabic) uses bidi isolation.
-- Western digits are displayed in both languages unless D-19 decides otherwise; inputs accept Arabic-Indic digits.
+- Western digits are displayed in both languages (D-19, ADR-0006); inputs accept Arabic-Indic digits.
 - Dates and times display in the market's time zone (Asia/Baghdad for Iraq); Gregorian calendar.
 - Every component and page is reviewed in both languages at worst-case text length.
 - Kurdish (Sorani) is out of scope until D-13.
